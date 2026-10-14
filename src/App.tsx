@@ -41,6 +41,19 @@ function Frame({
   onLeave?: () => void;
 }) {
   const video = useRef<HTMLVideoElement>(null);
+  const image = useRef<HTMLImageElement>(null);
+  const [readySrc, setReadySrc] = useState<string | null>(null);
+  const loaded = readySrc === project.src;
+
+  useEffect(() => {
+    if (project.media === "video") {
+      const el = video.current;
+      if (el && el.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) setReadySrc(project.src);
+      return;
+    }
+    const el = image.current;
+    if (el?.complete && el.naturalWidth > 0) setReadySrc(project.src);
+  }, [project.media, project.src]);
 
   useEffect(() => {
     const el = video.current;
@@ -66,18 +79,28 @@ function Frame({
       {wide ? <Copy project={project} /> : null}
       <div className={wide ? "card-stage mt-4" : "card-stage"}>
         <div className="card-frame">
+          {loaded ? null : <div className="media-skeleton" aria-hidden />}
           {project.media === "video" ? (
             <video
               ref={video}
               src={project.src}
-              className={wide ? "block h-full w-full object-contain" : "block h-full w-full object-cover"}
+              className={`${wide ? "block h-full w-full object-contain" : "block h-full w-full object-cover"} transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
               autoPlay
               muted
               loop
               playsInline
+              onLoadedData={() => setReadySrc(project.src)}
+              onError={() => setReadySrc(project.src)}
             />
           ) : (
-            <img src={project.src} alt="" className="block h-full w-full object-cover" />
+            <img
+              ref={image}
+              src={project.src}
+              alt=""
+              className={`block h-full w-full object-cover transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+              onLoad={() => setReadySrc(project.src)}
+              onError={() => setReadySrc(project.src)}
+            />
           )}
         </div>
       </div>
