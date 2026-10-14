@@ -166,7 +166,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="flex h-dvh flex-col bg-[hsl(0_0%_10%)]">
+    <div className="page flex h-dvh flex-col bg-[hsl(0_0%_10%)]">
       <header ref={header} className="site-header flex shrink-0 items-center gap-4 px-16 pt-16">
         <h1 className="text-[40px] leading-none font-medium text-[hsl(0_0%_90%)]">Hi Kiersten!</h1>
         <img src="/ant.gif" alt="" className="h-10 w-auto mix-blend-lighten" />

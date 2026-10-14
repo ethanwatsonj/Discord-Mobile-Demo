@@ -111,8 +111,12 @@ body {
   max-width: none;
 }
 
-/* Tablet and smaller: stack cards and scroll the column. */
+/* Tablet and smaller: stack cards and scroll the column, including the heading. */
 @media (max-width: 679px) {
+  .page {
+    overflow-y: auto;
+  }
+
   .site-header,
   .scroller {
     padding-left: 20px;
@@ -124,10 +128,11 @@ body {
   }
 
   .scroller {
+    flex: none;
     flex-direction: column;
     align-items: stretch;
-    overflow-x: hidden;
-    overflow-y: auto;
+    min-height: auto;
+    overflow: visible;
   }
 
   .phone-row {
