@@ -101,6 +101,10 @@ body {
     padding-right: 20px;
   }
 
+  .site-header {
+    padding-bottom: 2rem;
+  }
+
   .scroller {
     flex-direction: column;
     align-items: stretch;

@@ -10,7 +10,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "I typically design for desktop,",
-    body: "Here's Grabbit, a creative tool I've been building",
+    body: "Here's Grabbit, a creative tool I've been building.",
     src: "/frames/grabbit.mp4",
     media: "video",
     layout: "wide",
@@ -43,8 +43,8 @@ export const projects: Project[] = [
     layout: "aside",
   },
   {
-    title: "P.S., I've even got some android experience.",
-    body: "Android Studio was my first start into designing products when I was in highschool!",
+    title: "P.S., I've even got some android experience!",
+    body: "Android Studio was my first start into designing products when I was in highschool.",
     src: "/frames/efcr.jpg",
     aspectRatio: "9 / 16",
   },
