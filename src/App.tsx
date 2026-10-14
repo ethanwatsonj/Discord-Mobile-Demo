@@ -173,7 +173,7 @@ export function App() {
       </header>
       <main
         ref={scroller}
-        className="scroller box-border flex min-h-0 flex-1 items-stretch gap-10 overflow-x-auto overflow-y-hidden px-16 pt-8 pb-16"
+        className="scroller box-border flex min-h-0 flex-1 items-stretch gap-20 overflow-x-auto overflow-y-hidden px-16 pt-8 pb-16"
       >
       {rowsOf(projects).map((row) =>
         row.kind === "single" ? (
